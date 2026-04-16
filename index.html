@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solusi Smartphone | Link Bio</title>
+  <meta
+    name="description"
+    content="Link bio Solusi Smartphone untuk WhatsApp, katalog, lokasi toko, Instagram, dan kontak cepat."
+  >
+  <link rel="preload" as="image" href="./gambar/Logo.png">
+  <link rel="icon" type="image/png" href="./gambar/favicon-circle-from-logo.png?v=5">
+  <link rel="shortcut icon" type="image/png" href="./gambar/favicon-circle-from-logo.png?v=5">
+  <link rel="apple-touch-icon" href="./gambar/favicon-circle-from-logo.png?v=5">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --page-bg: #0f0f1a;
+      --page-pad: clamp(14px, 2.2vw, 24px);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: var(--page-bg);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(3deg); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.4; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .animate-fade-up {
+      animation: fadeUp 0.6s ease-out both;
+    }
+
+    .link-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.25);
+    }
+
+    .link-card:active {
+      transform: scale(0.98);
+    }
+
+    .avatar-ring::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      border: 3px solid;
+      border-color: inherit;
+      animation: pulse-ring 2.5s ease-out infinite;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(80px);
+      opacity: 0.35;
+      animation: float 8s ease-in-out infinite;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    body {
+      position: relative;
+      box-sizing: border-box;
+      font-family: "Outfit", sans-serif;
+      background: var(--page-bg);
+    }
+
+    #app {
+      position: relative;
+      min-height: 100svh;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: var(--page-bg);
+      isolation: isolate;
+    }
+
+    .profile-shell {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 28rem);
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(12px, 1.8vh, 20px);
+      padding: clamp(18px, 3vh, 28px) 0;
+      min-height: 100svh;
+      min-height: 100vh;
+    }
+
+    .brand-header {
+      padding-inline: 12px;
+      text-align: center;
+    }
+
+    .brand-header h1 {
+      font-size: clamp(1.9rem, 3.2vw, 2.35rem);
+      line-height: 1.05;
+    }
+
+    .brand-header p {
+      margin-top: 6px;
+      font-size: clamp(0.9rem, 1.4vw, 1rem);
+      line-height: 1.45;
+    }
+
+    #linksContainer {
+      display: grid;
+      gap: clamp(10px, 1.5vh, 14px);
+      width: 100%;
+      margin-top: 2px;
+    }
+
+    .link-card {
+      min-height: clamp(62px, 9vh, 82px);
+      padding: clamp(14px, 1.8vh, 18px) clamp(16px, 3vw, 20px);
+    }
+
+    .link-card span.font-medium {
+      font-size: clamp(1rem, 1.6vw, 1.1rem);
+    }
+
+    .footer-note {
+      margin-top: clamp(8px, 1.3vh, 12px);
+      font-size: 0.78rem;
+      text-align: center;
+    }
+
+    @media (max-height: 780px) {
+      .avatar-ring {
+        width: 6rem;
+        height: 6rem;
+      }
+
+      #avatar {
+        width: 5.25rem;
+        height: 5.25rem;
+      }
+
+      .profile-shell {
+        gap: 12px;
+      }
+
+      .brand-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .brand-header p {
+        font-size: 0.9rem;
+      }
+
+      .link-card {
+        min-height: 58px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .profile-shell {
+        width: min(100%, 26rem);
+        justify-content: flex-start;
+      }
+
+      .blob {
+        filter: blur(64px);
+      }
+    }
+  </style>
+</head>
+<body class="h-full w-full">
+  <div
+    id="app"
+    class="relative w-full"
+  >
+    <div
+      class="blob"
+      style="width:300px;height:300px;top:-60px;left:-80px;background:#6c3baa;animation-delay:0s;"
+    ></div>
+    <div
+      class="blob"
+      style="width:250px;height:250px;bottom:-40px;right:-60px;background:#2a6e8a;animation-delay:3s;"
+    ></div>
+    <div
+      class="blob"
+      style="width:180px;height:180px;top:40%;left:60%;background:#2b2b45;animation-delay:5s;"
+    ></div>
+
+    <div class="profile-shell">
+      <div class="animate-fade-up" style="animation-delay:0.1s;">
+        <div
+          class="avatar-ring relative w-28 h-28 rounded-full flex items-center justify-center"
+          style="border-color: #a07cdc;"
+        >
+          <div
+            id="avatar"
+            class="w-24 h-24 rounded-full flex items-center justify-center overflow-hidden"
+            style="background: linear-gradient(135deg, #6c3baa, #2a6e8a); color: #e8dff5;"
+          >
+            <img
+              src="./gambar/Logo.png"
+              alt="Logo Solusi Smartphone"
+              class="w-full h-full object-cover"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              width="11339"
+              height="11340"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-header animate-fade-up" style="animation-delay:0.2s;">
+        <h1 id="nameEl" class="text-2xl font-bold" style="color: #e8dff5;">Solusi Smartphone</h1>
+        <p id="bioEl" class="mt-1 text-sm opacity-70" style="color: #e8dff5;">
+          Toko Perbaikan Ponsel
+        </p>
+      </div>
+
+      <div id="linksContainer"></div>
+
+      <p class="footer-note opacity-40 animate-fade-up" style="animation-delay:0.9s; color:#e8dff5;">
+        Solusi cepat untuk kebutuhan smartphone kamu
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const defaultConfig = {
+      background_color: "#0f0f1a",
+      surface_color: "#1e1e35",
+      text_color: "#e8dff5",
+      primary_action_color: "#a07cdc",
+      secondary_action_color: "#2a6e8a",
+      font_family: "Outfit",
+      font_size: 16,
+      display_name: "Solusi Smartphone",
+      bio_text: "Toko Perbaikan Ponsel.",
+      link1_text: "Chat WhatsApp",
+      link1_url: "https://wa.me/6285122605523",
+      link2_text: "Lihat Katalog",
+      link2_url: "https://solusismartphone.com",
+      link3_text: "Instagram",
+      link3_url: "https://instagram.com/solusismartphone",
+      link4_text: "Lokasi Toko",
+      link4_url: "https://maps.app.goo.gl/axPgL3EGTV8ciFTZA",
+      link5_text: "Email Admin",
+      link5_url: "mailto:admin@cs.solusismartphone.com"
+    };
+
+    const linkIcons = {
+      1: "message-circle",
+      2: "smartphone",
+      3: "instagram",
+      4: "map-pin",
+      5: "mail"
+    };
+
+    function getVal(config, key) {
+      return config[key] ?? defaultConfig[key];
+    }
+
+    function renderLinks(config) {
+      const container = document.getElementById("linksContainer");
+      container.innerHTML = "";
+
+      for (let i = 1; i <= 5; i++) {
+        const text = getVal(config, `link${i}_text`);
+        const url = getVal(config, `link${i}_url`);
+
+        if (!text) continue;
+
+        const delay = 0.3 + i * 0.1;
+        const a = document.createElement("a");
+        a.href = url || "#";
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.className = "link-card animate-fade-up w-full flex items-center gap-4 px-5 py-4 rounded-2xl cursor-pointer";
+        a.style.cssText = [
+          `animation-delay:${delay}s`,
+          `background:${getVal(config, "surface_color")}`,
+          "border:1px solid rgba(255,255,255,0.07)"
+        ].join(";");
+
+        a.innerHTML = `
+          <span class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:${getVal(config, "primary_action_color")}22;">
+            <i data-lucide="${linkIcons[i]}" style="width:20px;height:20px;color:${getVal(config, "primary_action_color")};"></i>
+          </span>
+          <span class="font-medium" style="color:${getVal(config, "text_color")};font-size:${getVal(config, "font_size")}px;">${text}</span>
+          <i data-lucide="arrow-up-right" class="ml-auto opacity-40" style="width:18px;height:18px;color:${getVal(config, "text_color")};"></i>
+        `;
+
+        container.appendChild(a);
+      }
+
+      lucide.createIcons();
+    }
+
+    function onConfigChange(config) {
+      const bg = getVal(config, "background_color");
+      const text = getVal(config, "text_color");
+      const primary = getVal(config, "primary_action_color");
+      const secondary = getVal(config, "secondary_action_color");
+      const surface = getVal(config, "surface_color");
+      const font = getVal(config, "font_family");
+      const size = getVal(config, "font_size");
+
+      const app = document.getElementById("app");
+      app.style.background = bg;
+      document.body.style.fontFamily = `${font}, Outfit, sans-serif`;
+
+      const blobs = document.querySelectorAll(".blob");
+      if (blobs[0]) blobs[0].style.background = primary;
+      if (blobs[1]) blobs[1].style.background = secondary;
+      if (blobs[2]) blobs[2].style.background = surface;
+
+      const ring = document.querySelector(".avatar-ring");
+      ring.style.borderColor = primary;
+
+      const avatar = document.getElementById("avatar");
+      avatar.style.background = `linear-gradient(135deg, ${primary}, ${secondary})`;
+      avatar.style.color = text;
+
+      const nameEl = document.getElementById("nameEl");
+      nameEl.textContent = getVal(config, "display_name");
+      nameEl.style.color = text;
+      nameEl.style.fontSize = `${size * 1.5}px`;
+
+      const bioEl = document.getElementById("bioEl");
+      bioEl.textContent = getVal(config, "bio_text");
+      bioEl.style.color = text;
+      bioEl.style.fontSize = `${size * 0.875}px`;
+
+      renderLinks(config);
+    }
+
+    onConfigChange(defaultConfig);
+  </script>
+</body>
+</html>
